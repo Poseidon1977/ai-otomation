@@ -1,12 +1,24 @@
 @import "tailwindcss";
 
+@theme {
+  --color-dark: #0A0A0B;
+  --color-accent-cyan: #00F5FF;
+  --color-accent-purple: #BC13FE;
+  --color-accent-blue: #3B82F6;
+  --color-accent-indigo: #6366F1;
+}
+
+@source "../index.html";
+@source "./**/*.{js,ts,jsx,tsx}";
+
+
 :root {
   color-scheme: dark;
 }
 
 body {
   margin: 0;
-  background-color: #0A0A0A;
+  background-color: #0A0A0B;
   color: #FFFFFF;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
