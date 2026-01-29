@@ -7,19 +7,19 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <style>
-    html,
-    body {
-      overflow-x: hidden;
-      overscroll-behavior-y: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
+    :root {
+      --bg-dark: #0A0A0B;
     }
 
-    #root {
-      height: 100%;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+    html,
+    body {
+      background-color: var(--bg-dark);
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
   </style>
   <title translate="no">AI AutomatioN</title>
