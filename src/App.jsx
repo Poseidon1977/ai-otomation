@@ -3,9 +3,8 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import AboutAI from './components/AboutAI';
 import AutomationDetails from './components/AutomationDetails';
-import UseCases from './components/UseCases';
-import BusinessSectors from './components/BusinessSectors';
-import Projects from './components/Projects';
+import Pricing from './components/Pricing';
+import Service from './components/Service';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -15,7 +14,6 @@ function App() {
     const renderContent = () => {
         switch (activeSection) {
             case 'home':
-            case 'about':
                 return (
                     <>
                         <Hero />
@@ -23,12 +21,12 @@ function App() {
                         <AutomationDetails />
                     </>
                 );
-            case 'use-cases':
-                return <UseCases />;
-            case 'sectors':
-                return <BusinessSectors />;
-            case 'projects':
-                return <Projects />;
+            case 'pricing':
+                return <Pricing />;
+            case 'service':
+                return <Service />;
+            case 'about':
+                return <AboutAI />;
             case 'contact':
                 return <Contact />;
             default:
