@@ -1,7 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Brain, Target, BarChart, Clock, ShieldCheck, ChevronRight } from 'lucide-react';
 
 const AboutAI = () => {
+    const [activeDetail, setActiveDetail] = useState(null);
+
+    const extraDetails = [
+        {
+            id: 'what',
+            title: "Yapay Zeka Nedir?",
+            icon: <Brain className="text-accent-cyan" size={20} />,
+            content: "AI AutomatioN, sadece bir yazılım değil; işletmenizin yaşayan, öğrenen ve sürekli evrilen dijital beynidir. Geleneksel algoritmaların aksine, veriler arasındaki en karmaşık ilişkileri kavrar ve insan zekasının ulaşamayacağı bir hızda sonuç üretir."
+        },
+        {
+            id: 'why',
+            title: "Neye Yarar?",
+            icon: <Target className="text-accent-purple" size={20} />,
+            content: "Zamanı ve emeği en verimli hale getirmeye yarar. Karmaşık stratejik planlamalardan anlık müşteri etkileşimlerine kadar her noktada 'akıllı bir katman' oluşturarak operasyonel mükemmellik sağlar."
+        },
+        {
+            id: 'workload',
+            title: "İş Yükünü Nasıl Hafifletir?",
+            icon: <Clock className="text-accent-blue" size={20} />,
+            content: "Tekrarlayan ve hataya açık görevleri tamamen üstlenerek insan kaynağınızı özgürleştirir. %99.9 doğruluk oranıyla çalışan otonom sistemler, personelin yaratıcı ve katma değerli işlere odaklanmasını sağlar."
+        }
+    ];
+
     return (
         <div className="py-24 px-10 max-w-6xl mx-auto relative overflow-hidden">
             {/* Background Neural Network Constellation */}
@@ -25,23 +49,61 @@ const AboutAI = () => {
                 </svg>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
-                <div className="space-y-6">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight" translate="no">
-                        AI AutomatioN <span className="text-accent-purple" translate="yes">Nedir?</span>
-                    </h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-accent-cyan to-accent-purple" />
-                    <p className="text-lg text-white/70 leading-relaxed">
-                        <span translate="no">AI AutomatioN</span>, geleneksel iş süreçlerini yapay zeka algoritmaları ve otonom sistemlerle birleştiren yeni nesil bir çalışma disiplinidir.
-                        İnsan hatasını minimize eder, 7/24 kesintisiz çalışma imkanı sunar ve karmaşık veri setlerini saniyeler içinde analiz eder.
-                    </p>
-                    <p className="text-lg text-white/70 leading-relaxed">
-                        Sadece bir yazılım değil, işletmenizin dijital beyni olarak görev yapar.
-                        Müşteri hizmetlerinden veri girişine, pazarlama stratejilerinden üretim bandına kadar her alanda devrim yaratır.
-                    </p>
+            <div className="grid md:grid-cols-2 gap-16 items-start relative z-10">
+                <div className="space-y-12">
+                    <div className="space-y-6">
+                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight" translate="no">
+                            AI AutomatioN <span className="text-accent-purple" translate="yes">Nedir?</span>
+                        </h2>
+                        <div className="w-20 h-1 bg-gradient-to-r from-accent-cyan to-accent-purple" />
+                        <p className="text-lg text-white/70 leading-relaxed">
+                            <span translate="no">AI AutomatioN</span>, geleneksel iş süreçlerini yapay zeka algoritmaları ve otonom sistemlerle birleştiren yeni nesil bir çalışma disiplinidir.
+                            İşletmenizin dijital ekosisteminde devrim yaratan bu yapı, veriyi eyleme dönüştüren en güçlü yardımcınızdır.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        {extraDetails.map((detail) => (
+                            <motion.div
+                                key={detail.id}
+                                layout
+                                className={`p-6 rounded-2xl border transition-all cursor-pointer ${activeDetail === detail.id ? 'bg-white/10 border-accent-cyan/50' : 'bg-white/5 border-white/10 hover:border-white/20'}`}
+                                onClick={() => setActiveDetail(activeDetail === detail.id ? null : detail.id)}
+                            >
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-4">
+                                        <div className={`p-2 rounded-lg bg-black/20 ${activeDetail === detail.id ? 'text-accent-cyan' : 'text-white/40'}`}>
+                                            {detail.icon}
+                                        </div>
+                                        <h3 className="text-xl font-bold">{detail.title}</h3>
+                                    </div>
+                                    <motion.div
+                                        animate={{ rotate: activeDetail === detail.id ? 90 : 0 }}
+                                        className="text-white/20"
+                                    >
+                                        <ChevronRight size={20} />
+                                    </motion.div>
+                                </div>
+                                <AnimatePresence>
+                                    {activeDetail === detail.id && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="overflow-hidden"
+                                        >
+                                            <p className="pt-4 text-white/50 text-sm leading-relaxed border-t border-white/5 mt-4">
+                                                {detail.content}
+                                            </p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="relative aspect-square flex items-center justify-center p-4 min-h-[400px]">
+                <div className="sticky top-24 aspect-square flex items-center justify-center p-4 min-h-[400px]">
                     {/* Floating Data Particles flying into the center */}
                     <div className="absolute inset-0 pointer-events-none overflow-visible">
                         {[...Array(40)].map((_, i) => {
