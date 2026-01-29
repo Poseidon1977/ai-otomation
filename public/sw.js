@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ai-automation-v4';
+const CACHE_NAME = 'ai-automation-v5';
 const ASSETS = [
     '/',
     '/index.html',
