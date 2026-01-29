@@ -5,9 +5,9 @@ import { Home, Info, Cpu, Layers, MessageSquare } from 'lucide-react';
 const Sidebar = ({ activeSection, setActiveSection }) => {
     const menuItems = [
         { name: "Anasayfa", icon: <Home size={20} />, id: "home" },
-        { name: "Ücretler", icon: <Layers size={20} />, id: "pricing" },
         { name: "Servis & Bakım", icon: <Cpu size={20} />, id: "service" },
         { name: "AI Nedir?", icon: <Info size={20} />, id: "about" },
+        { name: "Ücretler", icon: <Layers size={20} />, id: "pricing" },
         { name: "İletişim", icon: <MessageSquare size={20} />, id: "contact" },
     ];
 
