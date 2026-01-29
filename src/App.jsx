@@ -43,12 +43,12 @@ function App() {
     };
 
     return (
-        <div className="flex bg-dark text-white min-h-screen selection:bg-accent-cyan/30">
-            {/* Sidebar - Fixed Left */}
+        <div className="flex flex-col xl:flex-row bg-dark text-white min-h-screen selection:bg-accent-cyan/30 overflow-hidden">
+            {/* Navigation Component (Sidebar on Desktop, Bottom Bar on App/Mobile) */}
             <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 
             {/* Main Content Area */}
-            <main className="ml-64 flex-1 flex flex-col items-center">
+            <main className="flex-1 flex flex-col items-center xl:ml-64 pb-32 xl:pb-0">
                 <div className="w-full">
                     {renderContent()}
                 </div>
