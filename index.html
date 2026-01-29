@@ -49,23 +49,6 @@
         navigator.serviceWorker.register('/sw.js');
       });
     }
-
-    // Emergency Diagnostic: Detect empty root
-    setTimeout(() => {
-      const root = document.getElementById('root');
-      if (root && root.innerHTML === "") {
-        console.error("Diagnostic: Root is still empty after 3s.");
-        const msg = document.createElement('div');
-        msg.style.cssText = "position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: white; color: black; padding: 40px; border-radius: 20px; text-align: center; border: 5px solid red; z-index: 10000; box-shadow: 0 0 100px rgba(0,0,0,0.5); font-family: sans-serif;";
-        msg.innerHTML = `<h2 style="color:red; margin-top:0;">ACİL DURUM TEŞHİSİ / EMERGENCY ERROR</h2>
-                             <p>Uygulama yüklenemedi. Lütfen Console'daki hataları kontrol edin.</p>
-                             <p style="font-size: 14px; color: #666;">Hata kodunu kopyalayıp asistana iletin.</p>
-                             <div style="background:#eee; padding:10px; border-radius:5px; margin-top:10px; font-weight:bold;">
-                                Sebep: React Mount Failed or Script Blocked
-                             </div>`;
-        document.body.appendChild(msg);
-      }
-    }, 3000);
   </script>
 </body>
 
